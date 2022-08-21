@@ -59,6 +59,23 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+    // Update the record module
+        public void UpdateData() {
+            btnviewUpdate.setOnClickListener(
+                    new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            boolean isUpdate = myDb.updateData(editTextId.getText().toString(),
+                                    editName.getText().toString(),
+                                    editSurname.getText().toString(),editMarks.getText().toString());
+                            if(isUpdate == true)
+                                Toast.makeText(MainActivity.this,"Data Update",Toast.LENGTH_LONG).show();
+                            else
+                                Toast.makeText(MainActivity.this,"Data not Updated",Toast.LENGTH_LONG).show();
+                        }
+                    }
+            );
+        }
 
     }
 }
