@@ -15,7 +15,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button buttonAdd, buttonViewAll;
+    Button buttonAdd, buttonViewAll, edit, delete;
     EditText editName, editRollNumber;
     Switch switchIsActive;
     ListView listViewStudent;
@@ -23,7 +23,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        edit = findViewById(R.id.btnedit);
+        delete = findViewById(R.id.btndelete);
         buttonAdd = findViewById(R.id.buttonAdd);
         buttonViewAll = findViewById(R.id.buttonViewAll);
         editName = findViewById(R.id.editTextName);
@@ -60,38 +61,42 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     // Update the record module
-        public void UpdateData() {
-            btnviewUpdate.setOnClickListener(
+        edit.setOnClickListener(new View.OnClickListener() {
+            public void UpdateData() {
+                btnviewUpdate.setOnClickListener(
+                        new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                boolean isUpdate = myDb.updateData(editTextId.getText().toString(),
+                                        editName.getText().toString(),
+                                        editSurname.getText().toString(), editMarks.getText().toString());
+                                if (isUpdate == true)
+                                    Toast.makeText(MainActivity.this, "Data Update", Toast.LENGTH_LONG).show();
+                                else
+                                    Toast.makeText(MainActivity.this, "Data not Updated", Toast.LENGTH_LONG).show();
+                            }
+                        }
+                );
+            }
+        });
+
+    // delete Module
+    delete.setOnClickListener(new View.OnClickListener() {
+        public void DeleteData() {
+            btnDelete.setOnClickListener(
                     new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            boolean isUpdate = myDb.updateData(editTextId.getText().toString(),
-                                    editName.getText().toString(),
-                                    editSurname.getText().toString(),editMarks.getText().toString());
-                            if(isUpdate == true)
-                                Toast.makeText(MainActivity.this,"Data Update",Toast.LENGTH_LONG).show();
+                            Integer deletedRows = myDb.deleteData(editTextId.getText().toString());
+                            if (deletedRows > 0)
+                                Toast.makeText(MainActivity.this, "Data Deleted", Toast.LENGTH_LONG).show();
                             else
-                                Toast.makeText(MainActivity.this,"Data not Updated",Toast.LENGTH_LONG).show();
+                                Toast.makeText(MainActivity.this, "Data not Deleted", Toast.LENGTH_LONG).show();
                         }
                     }
             );
         }
+    });
 
-    }
 }
 
-// delete Module
-    public void DeleteData() {
-        btnDelete.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Integer deletedRows = myDb.deleteData(editTextId.getText().toString());
-                        if(deletedRows > 0)
-                            Toast.makeText(MainActivity.this,"Data Deleted",Toast.LENGTH_LONG).show();
-                        else
-                            Toast.makeText(MainActivity.this,"Data not Deleted",Toast.LENGTH_LONG).show();
-                    }
-                }
-        );
-    }
