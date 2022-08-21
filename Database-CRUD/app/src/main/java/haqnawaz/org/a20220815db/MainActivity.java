@@ -79,3 +79,19 @@ public class MainActivity extends AppCompatActivity {
 
     }
 }
+
+// delete Module
+    public void DeleteData() {
+        btnDelete.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Integer deletedRows = myDb.deleteData(editTextId.getText().toString());
+                        if(deletedRows > 0)
+                            Toast.makeText(MainActivity.this,"Data Deleted",Toast.LENGTH_LONG).show();
+                        else
+                            Toast.makeText(MainActivity.this,"Data not Deleted",Toast.LENGTH_LONG).show();
+                    }
+                }
+        );
+    }
