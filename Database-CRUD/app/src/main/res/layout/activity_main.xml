@@ -99,13 +99,5 @@
         app:layout_constraintBottom_toBottomOf="@+id/listViewStudent"
         app:layout_constraintEnd_toEndOf="@+id/buttonAdd" />
 
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Delete all record"
-        tools:layout_editor_absoluteX="139dp"
-        tools:layout_editor_absoluteY="232dp" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
