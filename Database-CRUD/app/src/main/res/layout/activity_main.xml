@@ -84,7 +84,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="52dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="4dp"
         android:text="Update"
         app:layout_constraintBottom_toBottomOf="@+id/listViewStudent"
         app:layout_constraintStart_toStartOf="@+id/listViewStudent" />
@@ -93,11 +93,19 @@
         android:id="@+id/btndelete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="52dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginBottom="4dp"
         android:text="Delete"
         app:layout_constraintBottom_toBottomOf="@+id/listViewStudent"
         app:layout_constraintEnd_toEndOf="@+id/buttonAdd" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Delete all record"
+        tools:layout_editor_absoluteX="139dp"
+        tools:layout_editor_absoluteY="232dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
